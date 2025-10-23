@@ -1,59 +1,79 @@
 # Stringtools
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3.
+Stringtools adalah aplikasi berbasis web yang menyediakan berbagai alat untuk pengembang, seperti formatter JSON, generator hash, encoder/decoder, dan lainnya. Semua alat berjalan sepenuhnya di sisi klien (browser), sehingga data Anda tetap aman.
 
-## Development server
+## Fitur Utama
 
-To start a local development server, run:
+- **JSON Formatter**: Format dan validasi JSON dengan cepat.
+- **REST API Tool**: Membuat dan memformat cURL dengan mudah.
+- **Encoder & Decoder**: Mendukung Base64, URL encode/decode, HTML Entity, dan Hex.
+- **Hash Generator**: Buat hash MD5, SHA-1, SHA-256, SHA-512, dan bcrypt.
+- **String Diff**: Bandingkan dua teks dan lihat perbedaannya secara visual.
+
+## Cara Menjalankan Aplikasi
+
+### 1. Persiapan
+Pastikan Anda telah menginstal Node.js dan Angular CLI di komputer Anda.
+
+### 2. Instalasi Dependensi
+Jalankan perintah berikut untuk menginstal semua dependensi yang diperlukan:
+
+```bash
+npm install
+```
+
+### 3. Menjalankan Server Pengembangan
+Untuk menjalankan server pengembangan, gunakan perintah:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Setelah server berjalan, buka browser Anda dan akses aplikasi di `http://localhost:4200/`. Aplikasi akan otomatis memuat ulang jika ada perubahan pada kode sumber.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 4. Membuat Build Produksi
+Untuk membuat build produksi yang dioptimalkan, gunakan perintah:
 
 ```bash
-ng generate --help
+ng build --configuration=production
 ```
 
-## Building
+Hasil build akan disimpan di direktori `dist/`.
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 5. Menjalankan Unit Test
+Untuk menjalankan unit test menggunakan Karma, gunakan perintah:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+### 6. Menjalankan End-to-End Test
+Untuk menjalankan pengujian end-to-end (e2e), gunakan perintah:
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Cara Menggunakan Aplikasi
 
-## Additional Resources
+1. **Buka Aplikasi**: Akses aplikasi melalui browser di `http://localhost:4200/`.
+2. **Pilih Alat**: Gunakan tab navigasi untuk memilih alat yang Anda butuhkan, seperti JSON Formatter, Encoder, atau Hash Generator.
+3. **Masukkan Input**: Masukkan teks atau data yang ingin Anda proses di area input.
+4. **Lihat Hasil**: Hasil akan ditampilkan langsung di bawah form input.
+5. **Salin atau Hapus**: Gunakan tombol "Copy" untuk menyalin hasil atau "Clear" untuk menghapus input.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Keamanan Data
+
+Semua proses dilakukan di sisi klien (browser). Data Anda tidak pernah dikirim ke server, sehingga privasi Anda tetap terjaga.
+
+## Lisensi
+
+Aplikasi ini dilisensikan di bawah [MIT License](LICENSE).
+
+## Kontribusi
+
+Kami menerima kontribusi dari siapa saja. Silakan buat pull request atau buka issue di repository ini.
+
+## Informasi Tambahan
+
+Untuk informasi lebih lanjut tentang Angular CLI, kunjungi [Angular CLI Overview and Command Reference](https://angular.dev/tools/
