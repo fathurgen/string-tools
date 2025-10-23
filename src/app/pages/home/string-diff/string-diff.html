@@ -1,0 +1,33 @@
+
+  <h3 class="mb-3 pt-3">🔃 String Diff / Compare Tool</h3>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label>Teks Asli</label>
+      <textarea class="form-control" [(ngModel)]="originalText" rows="8" placeholder="Masukkan text original disini"></textarea>
+    </div>
+    <div class="col-md-6">
+      <label>Teks Pembanding</label>
+      <textarea class="form-control" [(ngModel)]="modifiedText" rows="8" placeholder="Masukkan text pembanding disini"></textarea>
+    </div>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" [(ngModel)]="ignoreWhitespace" id="ignoreWS" />
+    <label class="form-check-label" for="ignoreWS">Ignore Whitespace</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" [(ngModel)]="lineByLine" id="lineByLine" />
+    <label class="form-check-label" for="lineByLine">Line-by-line Mode</label>
+  </div>
+
+  <div class="text-end my-3">
+    <button class="btn btn-primary me-2" (click)="compare()">Compare</button>
+    <button class="btn btn-outline-secondary" (click)="clear()">Clear</button>
+  </div>
+
+  <div *ngIf="showDiff" class="diff-view border rounded">
+    <div class="diff-column border-end" [innerHTML]="diffLeft"></div>
+    <div class="diff-column" [innerHTML]="diffRight"></div>
+  </div>

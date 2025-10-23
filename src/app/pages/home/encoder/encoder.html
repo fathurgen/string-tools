@@ -1,0 +1,51 @@
+<h4 class="mb-3 pt-3">🔠 Encoding / Decoding Tools</h4>
+
+<div class="mb-3">
+  <textarea [(ngModel)]="inputText" class="form-control" rows="5"
+    placeholder="Masukkan teks yang ingin di-encode/decode..."></textarea>
+</div>
+
+<div class="d-flex align-items-center mb-3">
+  <label class="me-2 fw-bold">Method:</label>
+  <div ngbDropdown>
+    <button class="btn btn-outline-primary" ngbDropdownToggle>
+      {{ selectedMethod }}
+    </button>
+    <div ngbDropdownMenu>
+      <button *ngFor="let methodItem of encodeDecodeMethods" class="dropdown-item"
+        (click)="selectedMethod = methodItem">
+        {{ methodItem }}
+      </button>
+    </div>
+  </div>
+
+  <div class="btn-group ms-3">
+    <button class="btn btn-outline-success" [class.active]="mode === 'encode'" (click)="mode = 'encode'">
+      Encode
+    </button>
+    <button class="btn btn-outline-info" [class.active]="mode === 'decode'" (click)="mode = 'decode'">
+      Decode
+    </button>
+  </div>
+
+  <button class="btn btn-primary ms-3" (click)="convert()">Convert</button>
+  <button class="btn btn-outline-secondary ms-2" (click)="clear()">Clear</button>
+</div>
+
+<div *ngIf="formattedEncodedText" class="mt-4">
+
+  <div class="d-flex align-items-start">
+    <pre class="bg-light p-3 rounded flex-grow-1">{{ formattedEncodedText }}</pre>
+    @if(formattedEncodedText){
+    <button type="button" class="btn btn-outline-secondary ms-2" (click)="copyToClipboard()">
+      Copy
+    </button>
+    <button type="button" class="btn btn-outline-secondary ms-2" (click)="clear()">
+      Clear
+    </button>
+    }
+  </div>
+  @if(copied){
+  <small class="text-success">Copied!</small>
+  }
+</div>

@@ -1,0 +1,9 @@
+<h5>Date Formatter</h5>
+<input type="date" class="form-control mb-3" [(ngModel)]="selectedDate">
+
+<div *ngIf="selectedDate">
+  <p><strong>Original:</strong> {{ selectedDate }}</p>
+  <p><strong>Formatted (short):</strong> {{ selectedDate | date:'shortDate' }}</p>
+  <p><strong>Formatted (long):</strong> {{ selectedDate | date:'fullDate' }}</p>
+  <p><strong>Time:</strong> {{ selectedDate | date:'shortTime' }}</p>
+</div>

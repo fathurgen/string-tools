@@ -1,0 +1,46 @@
+textarea.form-control {
+  font-family: monospace;
+  resize: vertical;
+  font-size: 14px;
+}
+
+.diff-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f8f9fa;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.diff-column {
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.diff-line {
+  display: block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+}
+
+:host ::ng-deep .diff-del {
+  background: #ffecec;
+  color: #d32f2f;
+}
+
+:host ::ng-deep .diff-add {
+  background: #dff4e1;
+  color: #2e7d32;
+}
+
+:host ::ng-deep .diff-same {
+  background: transparent;
+  color: #444;
+}
+
+:host ::ng-deep .diff-empty {
+  background: transparent;
+  color: transparent;
+}

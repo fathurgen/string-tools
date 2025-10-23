@@ -1,0 +1,42 @@
+<h4 class="mb-3 pt-3">📜 JSON Formatter</h4>
+
+<div class="mb-3">
+  <textarea class="form-control mb-3" rows="15" [(ngModel)]="rawJson" placeholder="Masukkan JSON disini"></textarea>
+</div>
+
+<div class="d-flex align-items-center mb-3">
+
+  <button class="btn btn-primary mb-3 me-2" (click)="beautify()">Beautify</button>
+  <button class="btn btn-success mb-3 me-2" (click)="format()">Deep Format</button>
+  <button class="btn btn-info mb-3 me-2" (click)="minify()">Minify</button>
+  <button class="btn btn-warning mb-3 me-2" (click)="normalize()">Normalize</button>
+  <button class="btn btn-danger mb-3 me-2" (click)="deepNormalize()">Deep Normalize</button>
+  <button class="btn btn-secondary mb-3 me-2" (click)="xml()">XML</button>
+  <button class="btn btn-secondary mb-3" (click)="deepXml()">Deep XML</button>
+</div>
+
+<div class="alert alert-info" role="alert">
+  <p style="font-size: 14px;"><strong>Deep</strong> Phrase indicates that all nested elements in the json will be
+    parsed and eliminate escape characters <i>if nested value of json is valid</i> JSON<br>
+    <i>example</i>: <code>{{ exampleDeepJsonString }}</code>
+  </p>
+</div>
+
+<!-- <pre class="bg-light p-3 rounded">{{ formattedJson }}</pre> -->
+<div class="d-flex align-items-start">
+  @if(formattedJson){
+  <pre class="bg-light p-3 rounded flex-grow-1 border border-secondary">{{ formattedJson }}</pre>
+  <button type="button" class="btn btn-outline-secondary ms-2" (click)="copyToClipboard()">
+    Copy
+  </button>
+  <button type="button" class="btn btn-outline-secondary ms-2" (click)="clear()">
+    Clear
+  </button>
+  }
+  @else {
+  <pre class="bg-light p-3 rounded flex-grow-1 border border-secondary">Hasil akan tampil disini</pre>
+  }
+</div>
+@if(copied){
+<small class="text-success">Copied!</small>
+}

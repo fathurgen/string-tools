@@ -1,0 +1,129 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <button ngbNavLink>Create cURL</button>
+    <ng-template ngbNavContent>
+
+      <div class="row">
+        <div class="col">
+
+          <div class="container mt-3">
+            <form [formGroup]="restForm" (ngSubmit)="curl()">
+              <!-- URL -->
+              <div class="mb-3">
+                <label>URL</label>
+                <input formControlName="url" class="form-control" placeholder="https://api.example.com/resource">
+              </div>
+
+              <!-- Method -->
+              <div class="mb-3">
+                <label>Method</label>
+                <select formControlName="method" class="form-select">
+                  <option *ngFor="let m of ['GET','POST','PUT','PATCH','DELETE']">{{m}}</option>
+                </select>
+              </div>
+
+              <!-- Headers -->
+              <div class="mb-3">
+                <label>Headers</label>
+                <div formArrayName="headers">
+                  <div *ngFor="let h of headers.controls; let i=index" [formGroupName]="i" class="d-flex mb-2">
+                    <input formControlName="key" class="form-control me-2" placeholder="Header Key">
+                    <input formControlName="value" class="form-control me-2" placeholder="Header Value">
+                    <button type="button" class="btn btn-danger btn-sm" (click)="removeHeader(i)">x</button>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-outline-primary btn-sm mt-2" (click)="addHeader()">+ Add
+                  Header</button>
+              </div>
+
+              <!-- Query Params -->
+              <div class="mb-3">
+                <label>Query Params</label>
+                <div formArrayName="queryParams">
+                  <div *ngFor="let qp of queryParams.controls; let i=index" [formGroupName]="i" class="d-flex mb-2">
+                    <input formControlName="key" class="form-control me-2" placeholder="Key">
+                    <input formControlName="value" class="form-control me-2" placeholder="Value">
+                    <button type="button" class="btn btn-danger btn-sm" (click)="removeQueryParam(i)">x</button>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-outline-primary btn-sm mt-2" (click)="addQueryParam()">+ Add Query
+                  Param</button>
+              </div>
+
+              <!-- Body Type + Body -->
+              <div *ngIf="['POST','PUT','PATCH'].includes(restForm.value.method)" class="mb-3">
+                <label>Body Type</label>
+                <select formControlName="bodyType" class="form-select mb-2">
+                  <option value="json">JSON</option>
+                  <option value="form-data">Form Data</option>
+                  <option value="x-www-form-urlencoded">x-www-form-urlencoded</option>
+                </select>
+                <textarea formControlName="body" class="form-control" rows="5" placeholder='{"key":"value"}'></textarea>
+              </div>
+
+              <!-- Bypass HTTPS -->
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" formControlName="isBypassHttps">
+                <label class="form-check-label">Bypass HTTPS Validation (-k)</label>
+              </div>
+
+              <!-- Submit -->
+              <!-- <button type="submit" class="btn btn-success">Generate cURL</button> -->
+
+              <button class="btn btn-primary mb-3 me-2" (click)="curl()">create CURL</button>
+            </form>
+          </div>
+
+        </div>
+        <div class="col">
+          <div class="d-flex align-items-start">
+            <pre class="bg-light p-3 rounded flex-grow-1">{{ formattedRest }}</pre>
+            @if(formattedRest){
+            <button type="button" class="btn btn-outline-secondary ms-2" (click)="copyToClipboard('rest')">
+              Copy
+            </button>
+            }
+          </div>
+          @if(copied){
+          <small class="text-success">Copied!</small>
+          }
+        </div>
+      </div>
+
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <button ngbNavLink>cURL Formatter</button>
+    <ng-template ngbNavContent>
+      <div class="row">
+        <div class="col-md-6">
+
+          <textarea class="form-control mb-3" rows="15" [(ngModel)]="rawCurl" placeholder="Paste Text here"></textarea>
+
+          <button class="btn btn-primary mb-3 me-2" (click)="normalize()">Normalize</button>
+          <button class="btn btn-success mb-3 me-2" (click)="json()">JSON Format</button>
+          <button class="btn btn-warning mb-3 me-2" (click)="convertHttpTextToCurl()">Http Text to CURL</button>
+
+        </div>
+        <div class="col-md-6">
+
+          <!-- <pre class="bg-light p-3 rounded">{{ formattedRest }}</pre> -->
+
+          <div class="d-flex align-items-start">
+            <pre class="bg-light p-3 rounded flex-grow-1">{{ formattedCurl }}</pre>
+            @if(formattedCurl){
+            <button type="button" class="btn btn-outline-secondary ms-2" (click)="copyToClipboard('curl')">
+              Copy
+            </button>
+            }
+          </div>
+          @if(copied){
+          <small class="text-success">Copied!</small>
+          }
+        </div>
+      </div>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
