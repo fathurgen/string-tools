@@ -84,6 +84,13 @@ Contributions are welcome! To contribute:
 
 If you find any issues or have suggestions, feel free to open an issue.
 
+
+## Contribute
+
+<a href="https://github.com/fathurgen/string-tools/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=fathurgen/string-tools" />
+</a>
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
