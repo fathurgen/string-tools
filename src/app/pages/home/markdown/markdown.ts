@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, SecurityContext } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { MarkdownService } from '../../../services/markdown.service';
 
 @Component({
@@ -14,7 +15,10 @@ export class MarkdownTabComponent {
   renderedHtml = '';
   copyState: 'idle' | 'success' | 'error' | 'unsupported' = 'idle';
 
-  constructor(private readonly markdownService: MarkdownService) {
+  constructor(
+    private readonly markdownService: MarkdownService,
+    private readonly domSanitizer: DomSanitizer
+  ) {
     this.renderPreview();
   }
 
@@ -53,6 +57,7 @@ export class MarkdownTabComponent {
   }
 
   private renderPreview(): void {
-    this.renderedHtml = this.markdownService.parse(this.markdownText);
+    const parsedHtml = this.markdownService.parse(this.markdownText);
+    this.renderedHtml = this.domSanitizer.sanitize(SecurityContext.HTML, parsedHtml) ?? '';
   }
 }
