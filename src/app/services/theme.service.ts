@@ -10,6 +10,7 @@ export class ThemeService {
   private readonly storageKey = 'string-tools-theme';
   private readonly document = inject(DOCUMENT);
   private readonly isBrowser = typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+  private transitionCleanupTimer: ReturnType<typeof setTimeout> | null = null;
 
   private readonly themeSignal = signal<Theme>(this.getInitialTheme());
   readonly theme = this.themeSignal.asReadonly();
@@ -52,6 +53,18 @@ export class ThemeService {
     const body = this.document?.body;
     if (!body) {
       return;
+    }
+
+    if (this.isBrowser) {
+      body.classList.add('theme-transition');
+
+      if (this.transitionCleanupTimer !== null) {
+        window.clearTimeout(this.transitionCleanupTimer);
+      }
+
+      this.transitionCleanupTimer = window.setTimeout(() => {
+        body.classList.remove('theme-transition');
+      }, 400);
     }
 
     body.classList.toggle('dark-mode', theme === 'dark');
