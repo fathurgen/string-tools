@@ -1,0 +1,32 @@
+<section class="markdown-previewer card">
+  <div class="card-body">
+    <h3 class="mb-3">📝 Markdown Previewer</h3>
+    <div class="mb-3">
+      <label for="markdown-input" class="form-label">Markdown Input</label>
+      <textarea
+        id="markdown-input"
+        class="form-control"
+        rows="10"
+        placeholder="Tulis atau tempel Markdown di sini..."
+        [ngModel]="markdownText"
+        (ngModelChange)="onInput($event)"></textarea>
+      <small class="text-muted">Pratinjau HTML akan diperbarui secara otomatis saat kamu mengetik.</small>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 justify-content-end mb-3">
+      <button type="button" class="btn btn-outline-secondary" (click)="clear()">Clear</button>
+      <button type="button" class="btn btn-primary" (click)="copyPreview()">Copy HTML</button>
+    </div>
+
+    <p *ngIf="copyState === 'success'" class="text-success" role="status">✅ HTML berhasil disalin.</p>
+    <p *ngIf="copyState === 'error'" class="text-danger" role="alert">❌ Tidak ada HTML untuk disalin atau terjadi kesalahan.</p>
+    <p *ngIf="copyState === 'unsupported'" class="text-warning" role="alert">⚠️ Clipboard API tidak didukung di browser ini.</p>
+
+    <div class="preview border rounded p-3" aria-live="polite">
+      <div *ngIf="renderedHtml; else empty" [innerHTML]="renderedHtml"></div>
+      <ng-template #empty>
+        <p class="text-muted mb-0">Mulai ketik Markdown untuk melihat pratinjau HTML di sini.</p>
+      </ng-template>
+    </div>
+  </div>
+</section>
