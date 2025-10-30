@@ -1,79 +1,100 @@
 # Stringtools
 
-Stringtools adalah aplikasi berbasis web yang menyediakan berbagai alat untuk pengembang, seperti formatter JSON, generator hash, encoder/decoder, dan lainnya. Semua alat berjalan sepenuhnya di sisi klien (browser), sehingga data Anda tetap aman.
+Stringtools is a web-based application that provides various tools for developers, such as JSON formatter, hash generator, encoder/decoder, and more. All tools run entirely on the client side (browser), so your data remains private and secure.
 
-## Fitur Utama
+## Features
 
-- **JSON Formatter**: Format dan validasi JSON dengan cepat.
-- **REST API Tool**: Membuat dan memformat cURL dengan mudah.
-- **Encoder & Decoder**: Mendukung Base64, URL encode/decode, HTML Entity, dan Hex.
-- **Hash Generator**: Buat hash MD5, SHA-1, SHA-256, SHA-512, dan bcrypt.
-- **String Diff**: Bandingkan dua teks dan lihat perbedaannya secara visual.
+- **JSON Formatter**: Quickly format and validate JSON.
+- **REST API Tool**: Easily create and format cURL commands.
+- **Encoder & Decoder**: Supports Base64, URL encode/decode, HTML Entity, and Hex.
+- **Hash Generator**: Generate MD5, SHA-1, SHA-256, SHA-512, and bcrypt hashes.
+- **String Diff**: Compare two texts and see the differences visually.
 
-## Cara Menjalankan Aplikasi
+## Getting Started
 
-### 1. Persiapan
-Pastikan Anda telah menginstal Node.js dan Angular CLI di komputer Anda.
+### Prerequisites
 
-### 2. Instalasi Dependensi
-Jalankan perintah berikut untuk menginstal semua dependensi yang diperlukan:
+- [Node.js](https://nodejs.org/) (v16 or newer recommended)
+- [Angular CLI](https://angular.io/cli)
+
+### Installation
+
+Install all required dependencies:
 
 ```bash
 npm install
 ```
 
-### 3. Menjalankan Server Pengembangan
-Untuk menjalankan server pengembangan, gunakan perintah:
+### Development Server
+
+To start the development server, run:
 
 ```bash
 ng serve
 ```
 
-Setelah server berjalan, buka browser Anda dan akses aplikasi di `http://localhost:4200/`. Aplikasi akan otomatis memuat ulang jika ada perubahan pada kode sumber.
+Open your browser and go to `http://localhost:4200/`. The app will automatically reload if you change any source files.
 
-### 4. Membuat Build Produksi
-Untuk membuat build produksi yang dioptimalkan, gunakan perintah:
+### Production Build
+
+To build the app for production:
 
 ```bash
 ng build --configuration=production
 ```
 
-Hasil build akan disimpan di direktori `dist/`.
+The build output will be stored in the `dist/` directory.
 
-### 5. Menjalankan Unit Test
-Untuk menjalankan unit test menggunakan Karma, gunakan perintah:
+### Running Unit Tests
+
+To execute unit tests via [Karma](https://karma-runner.github.io):
 
 ```bash
 ng test
 ```
 
-### 6. Menjalankan End-to-End Test
-Untuk menjalankan pengujian end-to-end (e2e), gunakan perintah:
+### Running End-to-End Tests
+
+To execute end-to-end tests:
 
 ```bash
 ng e2e
 ```
 
-## Cara Menggunakan Aplikasi
+## Usage
 
-1. **Buka Aplikasi**: Akses aplikasi melalui browser di `http://localhost:4200/`.
-2. **Pilih Alat**: Gunakan tab navigasi untuk memilih alat yang Anda butuhkan, seperti JSON Formatter, Encoder, atau Hash Generator.
-3. **Masukkan Input**: Masukkan teks atau data yang ingin Anda proses di area input.
-4. **Lihat Hasil**: Hasil akan ditampilkan langsung di bawah form input.
-5. **Salin atau Hapus**: Gunakan tombol "Copy" untuk menyalin hasil atau "Clear" untuk menghapus input.
+1. **Open the App**: Access the app in your browser at `http://localhost:4200/`.
+2. **Select a Tool**: Use the navigation tabs to choose the tool you need (e.g., JSON Formatter, Encoder, Hash Generator).
+3. **Input Data**: Enter your text or data in the input area.
+4. **View Results**: The processed result will be displayed below the input form.
+5. **Copy or Clear**: Use the "Copy" button to copy the result or "Clear" to reset the input.
 
-## Keamanan Data
+## Data Security
 
-Semua proses dilakukan di sisi klien (browser). Data Anda tidak pernah dikirim ke server, sehingga privasi Anda tetap terjaga.
+All processing is done locally in your browser. No data is sent to any server, ensuring your privacy.
 
-## Lisensi
+## Contribution
 
-Aplikasi ini dilisensikan di bawah [MIT License](LICENSE).
+Contributions are welcome! To contribute:
 
-## Kontribusi
+1. Fork this repository.
+2. Create a new branch for your feature or bugfix.
+3. Commit your changes.
+4. Open a pull request describing your changes.
 
-Kami menerima kontribusi dari siapa saja. Silakan buat pull request atau buka issue di repository ini.
+If you find any issues or have suggestions, feel free to open an issue.
 
-## Informasi Tambahan
 
-Untuk informasi lebih lanjut tentang Angular CLI, kunjungi [Angular CLI Overview and Command Reference](https://angular.dev/tools/
+## Contribute
+
+<a href="https://github.com/fathurgen/string-tools/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=fathurgen/string-tools" />
+</a>
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## More Information
+
+For more details about Angular CLI, visit the [Angular CLI Documentation](https://angular.dev/tools/cli).

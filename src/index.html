@@ -6,8 +6,32 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3202222589173544"
+     crossorigin="anonymous"></script> -->
 </head>
 <body>
+  <script>
+    (function () {
+      var storageKey = 'string-tools-theme';
+      var theme = 'light';
+
+      try {
+        var stored = window.localStorage.getItem(storageKey);
+        if (stored === 'dark' || stored === 'light') {
+          theme = stored;
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          theme = 'dark';
+        }
+      } catch (error) {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          theme = 'dark';
+        }
+      }
+
+      document.body.classList.toggle('dark-mode', theme === 'dark');
+      document.body.setAttribute('data-bs-theme', theme);
+    })();
+  </script>
   <app-root></app-root>
 </body>
 </html>

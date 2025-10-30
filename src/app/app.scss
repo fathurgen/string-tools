@@ -1,13 +1,57 @@
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* memastikan tinggi minimal sama dengan viewport */
+// .app-container {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh; /* memastikan tinggi minimal sama dengan viewport */
+// }
+
+// main {
+//   flex: 1 0 auto; /* konten tumbuh dan mendorong footer */
+// }
+
+// footer {
+//   flex-shrink: 0; /* mencegah footer mengecil */
+// }
+.app-header {
+  background-color: var(--bs-body-bg);
+  transition: background-color 0.3s ease;
 }
 
-main {
-  flex: 1 0 auto; /* konten tumbuh dan mendorong footer */
+.app-navbar .nav-link,
+.app-navbar .navbar-brand {
+  color: var(--bs-body-color);
+  transition: color 0.3s ease;
 }
 
-footer {
-  flex-shrink: 0; /* mencegah footer mengecil */
+.app-navbar .nav-link.active {
+  font-weight: 600;
+}
+
+.app-navbar .nav-link:hover,
+.app-navbar .navbar-brand:hover {
+  color: var(--bs-link-hover-color);
+}
+
+.theme-toggle {
+  min-width: 130px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle span[aria-hidden='true'] {
+  font-size: 1.2rem;
+}
+
+.app-footer {
+  background-color: var(--bs-body-bg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-footer .footer-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-footer .footer-link:hover {
+  text-decoration: underline;
 }
