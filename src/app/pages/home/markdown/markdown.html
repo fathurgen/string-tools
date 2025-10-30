@@ -15,17 +15,18 @@
 
     <div class="d-flex flex-wrap gap-2 justify-content-end mb-3">
       <button type="button" class="btn btn-outline-secondary" (click)="clear()">Clear</button>
-      <button type="button" class="btn btn-primary" (click)="copyPreview()">Copy HTML</button>
+      <button type="button" class="btn btn-primary" (click)="copyPreview()">Copy as HTML</button>
     </div>
 
     <p *ngIf="copyState === 'success'" class="text-success" role="status">✅ HTML berhasil disalin.</p>
     <p *ngIf="copyState === 'error'" class="text-danger" role="alert">❌ Tidak ada HTML untuk disalin atau terjadi kesalahan.</p>
     <p *ngIf="copyState === 'unsupported'" class="text-warning" role="alert">⚠️ Clipboard API tidak didukung di browser ini.</p>
 
+    <span class="mb-3 text-muted">Pratinjau: </span>
     <div class="preview border rounded p-3" aria-live="polite">
       <div *ngIf="renderedHtml; else empty" [innerHTML]="renderedHtml"></div>
       <ng-template #empty>
-        <p class="text-muted mb-0">Mulai ketik Markdown untuk melihat pratinjau HTML di sini.</p>
+        <p class="mb-0 text-white-dark-mode">Mulai ketik Markdown untuk melihat pratinjau HTML di sini.</p>
       </ng-template>
     </div>
   </div>

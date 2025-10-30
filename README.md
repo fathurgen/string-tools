@@ -19,9 +19,18 @@ Stringtools is a web-based application that provides various tools for developer
 
 ### Installation
 
+
+Clone Repository:
+
+```bash
+git clone https://github.com/fathurgen/string-tools.git
+```
+
+
 Install all required dependencies:
 
 ```bash
+cd string-tools
 npm install
 ```
 
@@ -85,11 +94,15 @@ Contributions are welcome! To contribute:
 If you find any issues or have suggestions, feel free to open an issue.
 
 
-## Contribute
+## Contributors
 
-<a href="https://github.com/fathurgen/string-tools/graphs/contributors">
+* [mashurimansur](https://github.com/mashurimansur) dark/light theme
+* [benebobaa](https://github.com/benebobaa) markdown preview
+* [EzraFathurrahman](https://github.com/EzraFathurrahman) qrcode generator/extractor
+
+<!-- <a href="https://github.com/fathurgen/string-tools/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=fathurgen/string-tools" />
-</a>
+</a> -->
 
 ## License
 
