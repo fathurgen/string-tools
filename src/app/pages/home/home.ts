@@ -9,6 +9,7 @@ import { EncoderTabComponent } from './encoder/encoder';
 import { HashTabComponent } from "./hash/hash";
 import { StringDiffTabComponent } from "./string-diff/string-diff";
 import { MarkdownTabComponent } from './markdown/markdown';
+import { QRCodeTabComponent } from './qrcode/qrcode';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,8 @@ import { MarkdownTabComponent } from './markdown/markdown';
     EncoderTabComponent,
     HashTabComponent,
     StringDiffTabComponent,
-    MarkdownTabComponent
+    MarkdownTabComponent,
+    QRCodeTabComponent
 ],
   templateUrl: './home.html',
   styleUrl: './home.scss'
@@ -38,7 +40,8 @@ export class Home {
     { title: 'REST', fragment: 'rest', component: () => import('./rest/rest').then(m => m.RestTabComponent) },
     { title: 'Hash', fragment: 'hash', component: () => import('./hash/hash').then(m => m.HashTabComponent) },
     { title: 'String Diff', fragment: 'string-diff', component: () => import('./string-diff/string-diff').then(m => m.StringDiffTabComponent) },
-    { title: 'Markdown', fragment: 'markdown', component: () => import('./markdown/markdown').then(m => m.MarkdownTabComponent) }
+    { title: 'Markdown', fragment: 'markdown', component: () => import('./markdown/markdown').then(m => m.MarkdownTabComponent) },
+    { title: 'QR Code', fragment: 'qrcode', component: () => import('./qrcode/qrcode').then(m => m.QRCodeTabComponent) }
   ];
 
   onTabChange(event: NgbNavChangeEvent) {

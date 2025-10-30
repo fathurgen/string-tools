@@ -35,7 +35,9 @@
             ],
             "allowedCommonJsDependencies": [
                 "crypto-js",
-                "diff-match-patch"
+                "diff-match-patch",
+                "qrcode",
+                "qr-scanner"
             ]
           },
           "configurations": {

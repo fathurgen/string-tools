@@ -59,10 +59,10 @@ export class ThemeService {
       body.classList.add('theme-transition');
 
       if (this.transitionCleanupTimer !== null) {
-        window.clearTimeout(this.transitionCleanupTimer);
+        clearTimeout(this.transitionCleanupTimer);
       }
 
-      this.transitionCleanupTimer = window.setTimeout(() => {
+      this.transitionCleanupTimer = setTimeout(() => {
         body.classList.remove('theme-transition');
       }, 400);
     }
