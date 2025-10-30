@@ -1,0 +1,103 @@
+<div class="container my-4" *ngIf="!loading">
+
+	
+	<div class="pt-2 row mt-4" *ngIf="!article()">
+		<!-- Main Tool Area -->
+		<div class="col-md-9">
+
+			<h4 class="mb-3 text-muted">Blog DevTools Kita</h4>
+
+			<hr class="mt-0" />
+			
+			<h2 class="fw-bold mb-3">{{ lastArticle().title }}</h2>
+			<div class="text-muted mb-3">Ditulis oleh DevTools Kita</div>
+
+			<div [innerHTML]="lastArticle().content" class="blog-content"></div>
+
+			<!-- === Daftar Artikel === -->
+			<p class="text-muted mb-4">Lihat artikel lain:</p>
+
+			<div class="list-group">
+				<a *ngFor="let post of articles" class="list-group-item list-group-item-action" (click)="goToArticle(post.slug)">
+					<h5 class="mb-1">{{ post.title }}</h5>
+					<p class="mb-1 text-muted">{{ post.description }}</p>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			
+      <div style="top: 80px;">
+        <script async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3202222589173544"
+          crossorigin="anonymous"></script>
+        <!-- right_sidebar -->
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3202222589173544"
+          data-ad-slot="8843185613" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+			
+			<div style="top: 80px;">
+				<p class="text-muted mb-4">Artikel Lainnya:</p>
+
+				<div class="list-group">
+					<a *ngFor="let post of articles" class="list-group-item list-group-item-action" (click)="goToArticle(post.slug)">
+						<h5 class="mb-1">{{ post.title }}</h5>
+						<p class="mb-1 text-muted">{{ post.description }}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+	<!-- === Detail Artikel === -->
+	<div class="pt-2 row mt-4" *ngIf="article()">
+		<!-- Main Tool Area -->
+		<div class="col-md-9">
+
+			<a (click)="backToList()" class="btn btn-outline-primary mb-4">← Kembali ke Blog</a>
+
+			<h2 class="fw-bold mb-3">{{ article()?.title }}</h2>
+			<div class="text-muted mb-3">Ditulis oleh DevTools Kita</div>
+
+			<div [innerHTML]="article()?.content" class="blog-content"></div>
+
+		</div>
+		<div class="col-md-3">
+			
+      <div class="sticky-top" style="top: 80px;">
+        <script async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3202222589173544"
+          crossorigin="anonymous"></script>
+        <!-- right_sidebar -->
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3202222589173544"
+          data-ad-slot="8843185613" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+
+			<div class="sticky-top" style="top: 80px;">
+				<p class="text-muted mb-4">Artikel Lainnya:</p>
+
+				<div class="list-group">
+					<a *ngFor="let post of articles" class="list-group-item list-group-item-action" (click)="goToArticle(post.slug)">
+						<h5 class="mb-1">{{ post.title }}</h5>
+						<p class="mb-1 text-muted">{{ post.description }}</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+
+<!-- Loading Spinner -->
+<div class="container text-center my-5" *ngIf="loading">
+	<div class="spinner-border text-secondary" role="status"></div>
+	<p class="mt-2 text-muted">Memuat konten...</p>
+</div>

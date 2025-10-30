@@ -27,7 +27,6 @@ import { StringDiffTabComponent } from "./string-diff/string-diff";
 })
 export class Home {
   active: string = 'json';
-  currentYear = new Date().getFullYear();
   activateTab: string = 'json';
 
   links = [
