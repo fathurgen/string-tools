@@ -29,7 +29,6 @@ import { MarkdownTabComponent } from './markdown/markdown';
 })
 export class Home {
   active: string = 'json';
-  currentYear = new Date().getFullYear();
   activateTab: string = 'json';
 
   links = [

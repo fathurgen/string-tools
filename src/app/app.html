@@ -1,33 +1,15 @@
+
 <div class="app-shell d-flex flex-column min-vh-100">
-  <header class="app-header border-bottom">
-    <nav class="navbar navbar-expand app-navbar">
-      <div class="container-fluid container-lg">
-        <a class="navbar-brand fw-semibold" routerLink="/">DevTools Kita</a>
-        <div class="app-navbar__actions d-flex flex-wrap align-items-center justify-content-end gap-2">
-          <nav class="nav flex-row gap-1">
-            <a class="nav-link py-1 px-2" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-            <a class="nav-link py-1 px-2" routerLink="/markdown" routerLinkActive="active">Markdown</a>
-            <a class="nav-link py-1 px-2" routerLink="/about" routerLinkActive="active">About</a>
-            <a class="nav-link py-1 px-2" routerLink="/privacy" routerLinkActive="active">Privacy</a>
-          </nav>
-          <button type="button"
-                  class="btn btn-outline-secondary theme-toggle"
-                  (click)="toggleTheme()"
-                  [attr.aria-pressed]="isDarkMode()"
-                  [attr.title]="isDarkMode() ? 'Mode terang' : 'Mode gelap'">
-            <span class="me-2 d-none d-sm-inline">{{ isDarkMode() ? 'Mode Gelap' : 'Mode Terang' }}</span>
-            <span aria-hidden="true">{{ isDarkMode() ? '🌙' : '☀️' }}</span>
-          </button>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <app-header></app-header>
 
   <main class="flex-grow-1">
-    <router-outlet />
+    <router-outlet></router-outlet>
   </main>
 
-  <footer class="app-footer border-top py-3">
+  <app-footer></app-footer>
+</div>
+
+  <!-- <footer class="app-footer border-top py-3">
     <div class="container-fluid container-lg text-center text-muted small">
       <p class="mb-1">© {{ currentYear }} DevTools Kita — Alat Pengembang Online</p>
       <p class="mb-0">
@@ -36,4 +18,4 @@
       </p>
     </div>
   </footer>
-</div>
+</div> -->

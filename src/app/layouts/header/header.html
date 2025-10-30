@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/">DevTools Kita</a>
+    <p class="text-muted mb-0 d-lg-none">
+      Alat pengembang online. operasi string/kata/teks pada pengembang.
+    </p>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-controls="navbarNav"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/blog" routerLinkActive="active">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">Tentang</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/privacy" routerLinkActive="active">Privasi</a>
+        </li>
+      </ul>
+    </div>
+
+    <button type="button"
+            class="btn btn-outline-secondary theme-toggle ms-2"
+            (click)="toggleTheme()"
+            [attr.aria-pressed]="isDarkMode()"
+            [attr.title]="isDarkMode() ? 'Mode terang' : 'Mode gelap'">
+      <span class="me-2 d-none d-sm-inline">{{ isDarkMode() ? 'Mode Gelap' : 'Mode Terang' }}</span>
+      <span aria-hidden="true">{{ isDarkMode() ? '🌙' : '☀️' }}</span>
+    </button>
+  </div>
+</nav>

@@ -4,15 +4,14 @@
   <textarea class="form-control mb-3" rows="15" [(ngModel)]="rawJson" placeholder="Masukkan JSON disini"></textarea>
 </div>
 
-<div class="d-flex align-items-center mb-3">
-
-  <button class="btn btn-primary mb-3 me-2" (click)="beautify()">Beautify</button>
-  <button class="btn btn-success mb-3 me-2" (click)="format()">Deep Format</button>
-  <button class="btn btn-info mb-3 me-2" (click)="minify()">Minify</button>
-  <button class="btn btn-warning mb-3 me-2" (click)="normalize()">Normalize</button>
-  <button class="btn btn-danger mb-3 me-2" (click)="deepNormalize()">Deep Normalize</button>
-  <button class="btn btn-secondary mb-3 me-2" (click)="xml()">XML</button>
-  <button class="btn btn-secondary mb-3" (click)="deepXml()">Deep XML</button>
+<div class="d-flex flex-wrap gap-2 mb-3">
+  <button class="btn btn-primary" (click)="beautify()">Beautify</button>
+  <button class="btn btn-success" (click)="format()">Deep Format</button>
+  <button class="btn btn-info" (click)="minify()">Minify</button>
+  <button class="btn btn-warning" (click)="normalize()">Normalize</button>
+  <button class="btn btn-danger" (click)="deepNormalize()">Deep Normalize</button>
+  <button class="btn btn-secondary" (click)="xml()">XML</button>
+  <button class="btn btn-secondary" (click)="deepXml()">Deep XML</button>
 </div>
 
 <div class="alert alert-info" role="alert">
