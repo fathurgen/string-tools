@@ -1,0 +1,170 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <button ngbNavLink>QR Generator</button>
+          <ng-template ngbNavContent>
+            <!-- QR Code Generator -->
+            <div class="generator-section">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="qr-input" class="form-label">Text to encode:</label>
+                    <textarea
+                      id="qr-input"
+                      class="form-control"
+                      rows="4"
+                      [(ngModel)]="inputText"
+                      placeholder="Enter text, URL, or any data to generate QR code..."
+                      (input)="generateQRCode()">
+                    </textarea>
+                  </div>
+                  
+                  <div class="d-flex gap-2 mb-3">
+                    <button 
+                      type="button" 
+                      class="btn btn-primary"
+                      (click)="generateQRCode()"
+                      [disabled]="!inputText.trim()">
+                      <i class="bi bi-qr-code me-2"></i>Generate QR Code
+                    </button>
+                    <button 
+                      type="button" 
+                      class="btn btn-outline-secondary"
+                      (click)="clearGenerator()">
+                      <i class="bi bi-trash me-2"></i>Clear
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="qr-output">
+                    <label class="form-label">Generated QR Code:</label>
+                    <div class="qr-display text-center p-3 border rounded">
+                      @if (qrCodeDataURL) {
+                        <img [src]="qrCodeDataURL" alt="Generated QR Code" class="img-fluid mb-3">
+                        <div class="d-flex gap-2 justify-content-center">
+                          <button 
+                            type="button" 
+                            class="btn btn-success btn-sm"
+                            (click)="downloadQRCode()">
+                            <i class="bi bi-download me-2"></i>Download
+                          </button>
+                          <button 
+                            type="button" 
+                            class="btn btn-outline-primary btn-sm"
+                            (click)="copyToClipboard(inputText)"
+                            [class.btn-success]="copied">
+                            <i class="bi" [class.bi-check]="copied" [class.bi-clipboard]="!copied"></i>
+                            {{ copied ? 'Copied!' : 'Copy Text' }}
+                          </button>
+                        </div>
+                      } @else {
+                        <div class="text-muted">
+                          <i class="bi bi-qr-code display-4 d-block mb-2"></i>
+                          <p>QR code will appear here</p>
+                        </div>
+                      }
+                    </div>
+                    
+                    @if (generatedQRCode) {
+                      <div class="mt-2">
+                        <small class="text-muted">{{ generatedQRCode }}</small>
+                      </div>
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </li>
+        
+  <li [ngbNavItem]="2">
+    <button ngbNavLink>QR Scanner</button>
+          <ng-template ngbNavContent>
+            <!-- QR Code Scanner -->
+            <div class="scanner-section">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="file-input" class="form-label">Upload an image to scan QR Code:</label>
+                    <input 
+                      #fileInput
+                      type="file" 
+                      id="file-input"
+                      class="form-control"
+                      accept="image/*"
+                      (change)="onFileSelected($event)">
+                  </div>
+                  
+                  <div class="d-flex gap-2 mb-3">
+                    <button 
+                      type="button" 
+                      class="btn btn-outline-secondary"
+                      (click)="clearScanner()">
+                      <i class="bi bi-trash me-2"></i>Clear
+                    </button>
+                  </div>
+                  
+                  <!-- Status indicator for file processing -->
+                  @if (scanStatus && !scanStatus.includes('Camera')) {
+                    <div class="scan-status mb-3">
+                      <div class="alert" 
+                           [ngClass]="{
+                             'alert-warning': isProcessing,
+                             'alert-success': scannedResult && scanStatus.includes('completed')
+                           }">
+                        <i class="bi" 
+                           [ngClass]="{
+                             'bi-arrow-clockwise': isProcessing,
+                             'bi-check-circle': scannedResult && scanStatus.includes('completed')
+                           }"
+                           [class.spin]="isProcessing"></i>
+                        {{ scanStatus }}
+                      </div>
+                    </div>
+                  }
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="scan-result">
+                    <label class="form-label">Scanned Result:</label>
+                    <div class="result-display p-3 border rounded">
+                      @if (scannedResult) {
+                        <div class="alert alert-success">
+                          <h6><i class="bi bi-check-circle me-2"></i>QR Code Detected!</h6>
+                          <div class="result-content">
+                            <textarea 
+                              class="form-control mb-2" 
+                              rows="4" 
+                              readonly 
+                              [value]="scannedResult">
+                            </textarea>
+                            <button 
+                              type="button" 
+                              class="btn btn-outline-primary btn-sm"
+                              (click)="copyToClipboard(scannedResult)"
+                              [class.btn-success]="copied">
+                              <i class="bi" [class.bi-check]="copied" [class.bi-clipboard]="!copied"></i>
+                              {{ copied ? 'Copied!' : 'Copy Result' }}
+                            </button>
+                          </div>
+                        </div>
+                      } @else if (scanError) {
+                        <div class="alert alert-warning">
+                          <i class="bi bi-exclamation-triangle me-2"></i>{{ scanError }}
+                        </div>
+                      } @else {
+                        <div class="text-muted text-center">
+                          <i class="bi bi-search display-4 d-block mb-2"></i>
+                          <p>Scan result will appear here</p>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
